@@ -1,6 +1,6 @@
 import {ADD_ITEM,SET_ALL_ITEMS,SET_FIELD_VALUE,SET_ITEM,DELETE_ITEM,UPDATE_ITEM,SET_INFRACTION_FIELD_VALUE,SET_INFRACTION_ITEM,SET_COLUMNS,CHECKED_COLUMN, SET_DETAILS_ITEM,CHANGE_DETAIL_FIELD_VALUE} from './constant'
 
-export const items=(state={'WellVisiteds':[],'WellViolations':[],'WellProfiles':[],'Items':[]},action)=>{
+export const items=(state={'WellVisiteds':[],'WellViolations':[],'WellProfiles':[]},action)=>{
     switch(action.type){
         case ADD_ITEM:
         return {...state,[action.index]:[...state[action.index],action.item]}
@@ -15,7 +15,7 @@ export const items=(state={'WellVisiteds':[],'WellViolations':[],'WellProfiles':
         return state
     }
 };
-export const item=(state={'WellVisiteds':{},'WellViolations':{},'WellProfiles':{},'Items':{}},action)=>{
+export const item=(state={'WellVisiteds':{},'WellViolations':{},'WellProfiles':{}},action)=>{
     switch(action.type){
         case SET_FIELD_VALUE:
         return  {...state,[action.index]:{...state[action.index],[action.field.internalName]:action.field.value}}
@@ -44,7 +44,7 @@ export const item=(state={'WellVisiteds':{},'WellViolations':{},'WellProfiles':{
         return state
      }
  };
- export const columns=(state={'WellVisiteds':[],'WellViolations':[],'WellProfiles':[],'Items':[]},action)=>{
+ export const columns=(state={'WellVisiteds':[],'WellViolations':[],'WellProfiles':[]},action)=>{
 
     switch(action.type){
 

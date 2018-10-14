@@ -111,21 +111,24 @@ const customStyles = {
                    isOpen={this.state.showModal}
                    contentLabel="onRequestClose Example"
                    onRequestClose={this.handleCloseModal}
+                   
                 >
+                 <div className='close-btt' onClick={this.handleCloseModal}>✖</div>
                   <this.props.itemIndex formName={this.state.formName} selectedItem={this.state.selectedItem} storeIndex={this.props.storeIndex}/>
-                  <button onClick={this.handleCloseModal}>بستن</button>
+                 
                 </Modal>
               </div>
-             <div>
+            { this.props.workFlow? <div>
                <Modal
                   isOpen={this.state.showModalWorkflow}
                   contentLabel="onRequestClose Example"
                   onRequestClose={this.handleCloseModal}
                >
+                <div className='close-btt' onClick={this.handleCloseModal}>✖</div>
                  <this.props.workFlow selectedItem={this.state.selectedItem} storeIndex={this.props.storeIndex}/>
-                  <button onClick={this.handleCloseModal}>بستن</button>
+                 
                </Modal> 
-               </div>
+               </div>:null}
       </div>
       //  <BootstrapTable   
       

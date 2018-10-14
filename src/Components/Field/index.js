@@ -21,15 +21,13 @@ import Lookup from '../Lookup';
 
 
 class Field extends React.Component{
-   constructor(props){
-       super(props);
-   }
+  
    render() {
    
     let formName=this.props.formName;
-    let { accessor, type , Header } = this.props.field
+    let { accessor, type , Header,errorMessge } = this.props.fields.find((field)=>field.accessor==this.props.internalName)
    // console.log(this.props.internalName, this.props.fields)
-    return (<div>
+    return (<div className='field-item' >
         <fieldset className={this.props.uniqueName} >
 
             <Label value={Header} htmlFor={this.props.internalName} />
@@ -39,7 +37,7 @@ class Field extends React.Component{
 
                         case 'String':
                         return (
-                            <div>
+                            <div className='item-view'>
                               {formName!=='Display' ? <Text render={TextWid} internalName={this.props.internalName} storeIndex={this.props.storeIndex} /> :
                               <Span internalName={this.props.internalName} value={this.props.item[accessor]} />}
                             </div>
@@ -47,7 +45,7 @@ class Field extends React.Component{
                         case 'Int32':
                         case 'Decimal':
                             return (
-                                <div>
+                                <div className='item-view'>
                                     {formName!=='Display'?<Number render={NumberWid} internalName={this.props.internalName}  className={'input input-' + this.props.InternalName} storeIndex={this.props.storeIndex} />:
                                     <Span internalName={this.props.internalName} value={this.props.item[accessor]} /> }
                                 </div>
@@ -55,14 +53,14 @@ class Field extends React.Component{
                            case 'DateTime':
                           
                             return(
-                            <div>
+                            <div className='item-view'>
                                 {formName!=='Display' ? <Date render={DateWid} internalName={this.props.internalName} className={'input input-' + this.props.InternalName} storeIndex={this.props.storeIndex}/> :
                                 <Span internalName={this.props.internalName} value={this.props.item[accessor]} /> } 
                             </div>
                             ) 
                          case 'Select':
                                 return ( 
-                                <div>
+                                <div className='item-view' >
                                 {formName!=='Display'? <Select
                                 render={SelectWid}
                                     internalName={this.props.internalName}
@@ -74,7 +72,7 @@ class Field extends React.Component{
                                  </div>
                             )
                          case 'MultiChoice':
-                                return(<div>
+                                return(<div className='item-view'>
                                     {formName!=='Display'?
                                     <Select
                                 render={SelectWid}
@@ -130,7 +128,7 @@ class Field extends React.Component{
 
                     }
                 })()}
-                <span style={{color: 'red'}}>{'errorMessge' || ''}</span>
+                <span style={{color: 'red'}}>{errorMessge || ''}</span>
             </div>
 
 
@@ -143,5 +141,5 @@ class Field extends React.Component{
 
 }
 const mapStateToProps=(state,props)=>(
-    {field:state.columns[props.storeIndex].find((field)=>field.accessor==props.internalName),item:state.item[props.storeIndex]} )                                     
+    {field:state.columns[props.storeIndex].find((field)=>field.accessor==props.internalName),fields:state.columns[props.storeIndex],item:state.item[props.storeIndex]} )                                     
 export default connect(mapStateToProps)(Field)

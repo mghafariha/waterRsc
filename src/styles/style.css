@@ -1,0 +1,262 @@
+body {
+}
+.ReactModal__Content  label{}
+.ReactModal__Content fieldset{    width: 100%;
+    margin: 18px}
+.ReactModal__Content input{    width: 100%;}
+.form-contents{  text-align: right;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    direction: rtl;
+}
+.ReactModal__Content select {
+    
+    width: 100%;}
+
+.ReactModal__Content select[multiple] {
+    padding: 0;
+}
+.ReactModal__Content h1 {
+    text-align: center;
+    background: #fbfbfb;
+    margin: 5px 5px 8px 5px;
+    padding: 15px;
+    box-shadow: 0 0 1px rgba(0,0,0,0.2), 0 0 1px rgba(213,213,213,1);
+}
+.close-btt{    width: 23px;
+    cursor: pointer;}
+.buttons{  display: flex;
+    justify-content: center;}
+ .field-item{     
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: flex;
+    margin: 5px;
+    background: #fbfbfb;
+    padding: 13px;
+    box-shadow: 0 0 1px rgba(0,0,0,0.2), 0 0 1px rgba(213,213,213,1);}
+
+
+    input[type=text], input[type=number], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+        input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+.ReactModal__Overlay.ReactModal__Overlay--after-open{    background-color: rgba(143, 143, 143, 0.63)!important;}
+.buttons button {
+    margin-top: 10px;
+    padding: 10px;
+}
+.error-validation{    border: 2px solid #f00!important; }
+
+.ReactTable .rt-tbody {
+    text-align: center;}
+
+
+    .check-item {    direction: ltr;
+        background: #f9f9f9;
+        padding: 10px;
+        text-align: right;}
+
+.check-box-items{       background: #ececec;
+    direction: rtl;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 7px;
+    padding: 20px;
+    margin-bottom: 21px;}
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+.warper-form{     display: grid;
+    grid-template-columns: auto auto auto;
+    direction: rtl;}
+.row-items{background: #e3e5ff;
+    margin: 4px;
+    padding: 20px;}
+  .field-item  .item-view span{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+.input-project{    grid-template-columns: repeat(3, 1fr);
+    direction: rtl;
+    display: grid;
+    margin: 0 auto;
+    width: 49%;
+    margin: 0 auto;
+    grid-gap: 1em;
+    text-align: center;}
+    .table-show{grid-template-columns: repeat(1, 1fr);
+        display: grid;
+        direction: rtl;}
+        .col-table{grid-template-columns: repeat(3, 1fr);
+            display: grid;
+            padding: 1px 36px 1px 10px;}
+
+            textarea {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+            }   
+
+    .fild-row-item {
+        display: -webkit-flex;
+        -webkit-align-items: center;
+        display: flex;
+        align-items: center;
+    }
+    
+    .col-item:nth-child(odd) {
+        background: #e6e6e6;
+    }
+   .col-item:nth-child(even) {
+    background: #f2f2f2;
+    }
+    .table-show-item{    width: 100%;
+        direction: rtl;}
+
+@media (min-width: 1281px) {
+  
+    .form-contents {
+        grid-template-columns: auto auto auto;
+    }
+    .check-box-items{}
+  }
+  
+  /* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+  
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    
+ 
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    
+    .form-contents {
+        grid-template-columns: auto auto ;
+    }
+    .check-box-items{}
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    .form-contents {
+        grid-template-columns: auto auto ;
+    }
+    .check-box-items{}
+  }
+  .warper-form {
+     
+    grid-template-columns:  auto auto auto ;
+}
+  
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    .form-contents {
+        grid-template-columns: auto ;
+    }
+  
+    .check-box-items{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .warper-form {
+     
+        grid-template-columns: auto auto ;
+    }
+  }
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    
+    .form-contents {
+        grid-template-columns: auto ;
+    }
+    .check-box-items{
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .warper-form {
+     
+        grid-template-columns: auto ;
+    }
+
+  }

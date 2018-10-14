@@ -29,19 +29,22 @@ class WellWorkFlow extends React.Component{
  }
  render(){
      return (<form onSubmit={this.handleSubmit}>
-               <div>
+              <div className='warper-form'>
+               <div className="row-items" >
             
-                <StepOne isChecked={true}/>
+                <StepOne />
                </div>
               
-               <div>
+               <div className="row-items" >
               
-                <StepTwo/>
+                <StepTwo   />
                </div> 
-               <div>
+               <div className="row-items" >
               
-                <StepThree/>
+                <StepThree  />
                </div>
+
+                   </div>     
                <button type='submit'>submit</button>
              </form>)
  }

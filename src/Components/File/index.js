@@ -2,9 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setFieldValue} from '../../store/action';
 //import Files from 'react-files'
-import { Upload, message, Button, Icon } from 'antd';
+// import { Upload, message, Button, Icon } from 'antd';
+import ReactDropzone from 'react-dropzone';
 import {URL} from '../../api';
-
+import request from "superagent";
 //import ReactUploadFile from 'react-upload-file';
 
 class File extends React.Component{
@@ -12,6 +13,19 @@ class File extends React.Component{
   constructor(props){
         super(props);   
     }
+    onDrop= acceptedFiles => {
+      // acceptedFiles.forEach(file => {
+      //     const reader = new FileReader();
+      //     reader.onload = () => {
+      //         const fileAsBinaryString = reader.result;
+      //         // do whatever you want with the file content
+      //     };
+      //     reader.onabort = () => console.log('file reading was aborted');
+      //     reader.onerror = () => console.log('file reading has failed');
+  
+      //     reader.readAsBinaryString(file);
+      // });
+  }
     // handleChange=(info) =>{
     // console.log('file',info.file);
     //   // const reader = new FileReader();
@@ -22,24 +36,20 @@ class File extends React.Component{
     //   // reader.readAsDataURL(info.file.originFileObj);
     // // this.props.dispatch(setFieldValue(this.props.internalName,reader.readAsDataURL(info.file.originFileObj),this.props.storeIndex));
     //   }
-      uploadedBundle = (info) => {
-        console.log(info)
-        if (info.file.status !== 'uploading') {
-          console.log(info.file, info.fileList);
-        }
-        if (info.file.status === 'done') {
-          console.log(info);
-        } else if (info.file.status === 'error') {
-          console.log(info.fileList);
-        }
-        this.setState({
-          fileList: info.fileList,
-          size: +info.file.size
-        })
-      }
+     
   
     render(){
-        
+     
+        return (
+          <div className="app">
+            <ReactDropzone
+              onDrop={this.onDrop}
+            >
+              Drop your best gator GIFs here!!
+            </ReactDropzone>
+          </div>
+        );
+      }
 //       let value=this.props.item[this.props.internalName]||null;
 // return(
 //       <Upload onChange={this.handleChange} >
@@ -49,27 +59,6 @@ class File extends React.Component{
 //       </Upload>)
 //         // return this.props.render({internalName:this.props.internalName,value,onChange:this.handleChange})
 
-
-
-        const uploads = {
-          action:  '/uploadedFiles',
-          listType: 'picture',
-          defaultFileList: [],
-          onChange: this.uploadedBundle
-          // customRequest: this.uploadedBundle
-        };
-        return (
-          <div>
-          <Upload {...uploads}>
-            <Button className='modal-button login-form-button'>
-              <Icon type="upload">Upload A Study</Icon>
-            </Button>
-          </Upload>
-          </div>
-        )
-    }
-
-     
 }
 const mapStateToProps=(state,props)=>(console.log('itemFile',state.item[props.storeIndex]),
   

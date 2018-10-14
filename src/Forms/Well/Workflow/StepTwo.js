@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect}from 'react-redux';
 import Field from '../../../Components/Field';
 class StepTwo extends React.Component{
 
@@ -30,4 +31,4 @@ class StepTwo extends React.Component{
 const mapStateToProps=(state,props)=>({
     columns:state.columns['WellViolations'],item:state.item['WellViolations']
   })
-export default StepTwo
+export default connect(mapStateToProps)(StepTwo)

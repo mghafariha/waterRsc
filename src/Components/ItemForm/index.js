@@ -3,18 +3,30 @@ import {connect} from 'react-redux';
 import moment from 'moment-jalaali';
 import VisitForm from '../VisitForm';
 import InfractionForm from '../InfractionForm';
-import {addItem, setFieldValue,setItem,changeItem} from '../../store/action';
+import {addItem, setFieldValue,setItem,changeItem,setColumns} from '../../store/action';
 import Field from '../Field';
 import {saveItem,getItem,updateItem} from '../../api';
 import {getUrlVars} from '../../Constants/functions'
 import Modal from 'react-modal';
+import '../../styles/style.css'
 
 
 class ItemForm extends React.Component{
         constructor(props){
             super(props);
+           this.state={ columns: {}}
            
         }    
+        hasError=(fields)=>{
+            let requiredFiels = Object.values(fields).filter((item) => (item.errorMessge))
+            return requiredFiels.length != 0
+        }
+        checkRequired = () =>{
+            let requiredFiels = this.props.fields.filter((item)=> item.required && !item.value).map((item)=> ({...item, errorMessge: 'این فیلد الزامی است'}))
+            let newFields = [...this.state.columns, ...requiredFiels]
+            this.props.dispatch(setColumns(this.props.storeIndex,newFields))
+            return newFields
+        }
         componentDidMount=(e)=>{
            // let itmId=getUrlVars()['ID'];
             this.props.dispatch(setItem(this.props.selectedItem,this.props.storeIndex));
@@ -22,6 +34,12 @@ class ItemForm extends React.Component{
         }
         handleSubmit=(e)=>{
             e.preventDefault();
+            let fields = this.checkRequired()
+           
+            if (this.hasError(fields)) {
+            alert('has error')
+
+            } else {
            console.log('itemsave',this.props.item);
             if(!this.props.item['ID'])
             {
@@ -39,7 +57,7 @@ class ItemForm extends React.Component{
         else{
           
             updateItem(this.props.item,this.props.storeIndex).then((response)=>{
-               
+                alert('آیتم جدید با موفقیت ذخیره شد');
         
                 this.props.dispatch(changeItem(this.props.item,this.props.storeIndex));
                 //this.getTitle.value='';
@@ -50,12 +68,14 @@ class ItemForm extends React.Component{
         }
          
         }
+    }
 
     render(){
     
         return (
             <form onSubmit={this.handleSubmit}>
                 <h1></h1>
+                <div className='form-contents'  >
                { this.props.fields.map((field,index)=> <Field 
                         key={field.accessor}
                         internalName={field.accessor}
@@ -63,7 +83,7 @@ class ItemForm extends React.Component{
                         formName={this.props.formName}
                       
                     />)}
-                    
+                      </div>
                     {this.props.formName!='Display'?  <button  type="submit">ذخیره</button>:null}
             </form>
 

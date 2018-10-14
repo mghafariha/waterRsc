@@ -76,30 +76,37 @@ class WellViolationItem extends React.Component{
            کد پرونده  <input onChange={this.handleChangeCode} /> <input type='button' onClick={this.loadVisitProfile} value='بارگذاری' />
             </div>
             {this.state.loadData?
-           <div>
-              <div>
-                    <span>عمق چاه</span>شناسنامه ای <span>{this.state.profileItem.WellDepth}</span>بازدید<span>{this.state.visitItem.WellDepth}</span>اختلاف<span>{this.state.visitItem.WellDepth-this.state.profileItem.WellDepth}</span>
-                </div>
-                <div> <span> سطح آب</span>شناسنامه ای <span>{this.state.profileItem.WaterSurface}</span>بازدید<span>{this.state.visitItem.WaterSurface}</span>اختلاف<span>{this.state.visitItem.WaterSurface-this.state.profileItem.WaterSurface}</span>
-                </div>
-                <div>
-                <span>دبی (لیتر در تانیه)</span>شناسنامه ای<span>{this.state.profileItem.FlowWater}</span>بازدید<span>{this.state.visitItem.FlowWater}</span>اختلاف<span>{this.state.visitItem.FlowWater-this.state.profileItem.FlowWater}</span>
-                </div>
-                <div><span>هدایت الکتریکی</span>شناسنامه ای<span>{this.state.profileItem.EC}</span>بازدید<span>{this.state.visitItem.EC}</span>اختلاف<span>{this.state.visitItem.EC-this.state.profileItem.EC}</span></div>
-             </div>: null
+           
+               <table className='table-show-item' > 
+                   <thead>
+                       <tr>
+                           <th></th><th>شناسنامه ای</th><th>بازدید</th><th>اختلاف</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr>
+                            <td>عمق چاه</td><td>{this.state.profileItem.WellDepth}</td><td>{this.state.visitItem.WellDepth}</td><td>{this.state.visitItem.WellDepth-this.state.profileItem.WellDepth}</td>
+                            </tr> <tr><td> سطح آب</td><td>{this.state.profileItem.WaterSurface}</td><td>{this.state.visitItem.WaterSurface}</td><td>{this.state.visitItem.WaterSurface-this.state.profileItem.WaterSurface}</td>
+                            </tr><tr><td>  دبی (لیتر در تانیه)</td><td>{this.state.profileItem.FlowWater}</td><td>{this.state.visitItem.FlowWater}</td><td>{this.state.visitItem.FlowWater-this.state.profileItem.FlowWater}</td>
+                            </tr><tr><td>هدایت الکتریکی</td><td>{this.state.profileItem.EC}</td><td>{this.state.visitItem.EC}</td><td>{this.state.visitItem.EC-this.state.profileItem.EC}</td>
+                       </tr>
+                   </tbody>
+               </table>
+            : null
             }
                 <br/>
             <div>
                 <form onSubmit={this.handleSubmitInfraction}>
                     ثبت تخلف
+                    <div className='table-show'>
                     {
                     (this.props.item)&&this.props.item.rows ?
-                      this.props.item.rows.map((crt)=><div key={crt.rowId}>
-                     <span>{crt.Criterion}</span>تخلف<CheckBox render={CheckBoxWid} storeIndex={this.props.storeIndex} internalName='isChecked' rowID={crt.rowId}/> توضیحات<TextArea render={TextAreaWid} rowID={crt.rowId}  storeIndex={this.props.storeIndex} internalName='Description' />
+                      this.props.item.rows.map((crt)=><div className='col-item' key={crt.rowId}>
+                         <div className='col-table' ><div className='fild-row-item' >{crt.Criterion}</div><div className='fild-row-item' ><CheckBox render={CheckBoxWid} storeIndex={this.props.storeIndex} internalName='isChecked' rowID={crt.rowId}/></div><div className='fild-row-item' ><TextArea render={TextAreaWid} rowID={crt.rowId}  storeIndex={this.props.storeIndex} internalName='Description' /></div></div>
                       </div>)
                       :null
                     }
-               
+               </div>
                 <button>ثبت تخلف</button>
                 </form>
             </div>
@@ -113,7 +120,7 @@ class WellViolationItem extends React.Component{
     }
     
     }
-    const mapStateToProps=(state,props)=>(console.log('item555',state.item[props.storeIndex]),{
+    const mapStateToProps=(state,props)=>({
        
         item:state.item[props.storeIndex],
        // visitItem:state.item[props.visitIndex]

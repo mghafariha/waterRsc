@@ -14,12 +14,12 @@ class ColumnSelect extends React.Component{
     render(){
     
       let storeIndex= this.props.storeIndex;
-        return(<div>{
+        return(<div  className='check-box-items'>{
         this.props.columns.map((col,index) => 
-            <label key={col.accessor}>
+            <div className='check-item' key={col.accessor}>
               {col.Header}
               <CheckBox  internalName={col.accessor}  storeIndex={storeIndex} isChecked={col.isChecked} />
-             </label> 
+             </div> 
               
           )
          }
@@ -28,5 +28,5 @@ class ColumnSelect extends React.Component{
         )
     }
 }
-const mapStateToProps=(state,props)=>({columns:state.columns[props.storeIndex],items:state.items[props.storeIndex]})
+const mapStateToProps=(state,props)=>(console.log('columns4',state.columns[props.storeIndex]),{columns:state.columns[props.storeIndex],items:state.items[props.storeIndex]})
 export default  connect(mapStateToProps)(ColumnSelect)

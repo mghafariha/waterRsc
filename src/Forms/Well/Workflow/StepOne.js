@@ -35,4 +35,4 @@ import Field from '../../../Components/Field';
   const mapStateToProps=(state,props)=>({
     columns:state.columns['WellViolations'],item:state.item['WellViolations']
   })
-  export default StepOne
+  export default connect(mapStateToProps)(StepOne)
