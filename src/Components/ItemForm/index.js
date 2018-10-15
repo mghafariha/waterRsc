@@ -22,8 +22,13 @@ class ItemForm extends React.Component{
             return requiredFiels.length != 0
         }
         checkRequired = () =>{
-            let requiredFiels = this.props.fields.filter((item)=> item.required && !item.value).map((item)=> ({...item, errorMessge: 'این فیلد الزامی است'}))
-            let newFields = [...this.state.columns, ...requiredFiels]
+            let requiredFields = this.props.fields.
+            filter((itm)=>
+             itm.required && !this.props.item[itm.accessor]).
+             map((item)=>
+              ({...item, errorMessge: 'این فیلد الزامی است'}))
+             
+            let newFields = this.props.fields.map(col=>requiredFields.find(itm=>itm.accessor==col.accessor)?requiredFields.find(itm=>itm.accessor==col.accessor):{...col,errorMessge:''}) ;
             this.props.dispatch(setColumns(this.props.storeIndex,newFields))
             return newFields
         }
@@ -37,7 +42,7 @@ class ItemForm extends React.Component{
             let fields = this.checkRequired()
            
             if (this.hasError(fields)) {
-            alert('has error')
+            alert('در  اطلاعات وارد شده خطا وجود دارد.')
 
             } else {
            console.log('itemsave',this.props.item);
@@ -76,13 +81,13 @@ class ItemForm extends React.Component{
             <form onSubmit={this.handleSubmit}>
                 <h1></h1>
                 <div className='form-contents'  >
-               { this.props.fields.map((field,index)=> <Field 
+               { this.props.fields.map((field,index)=>field.accessor!='ID'? <Field 
                         key={field.accessor}
                         internalName={field.accessor}
                         storeIndex={this.props.storeIndex}
                         formName={this.props.formName}
                       
-                    />)}
+                    />:null)}
                       </div>
                     {this.props.formName!='Display'?  <button  type="submit">ذخیره</button>:null}
             </form>

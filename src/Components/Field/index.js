@@ -45,7 +45,7 @@ class Field extends React.Component{
                         case 'Int32':
                         case 'Decimal':
                             return (
-                                <div className='item-view'>
+                                <div className= 'item-view' >
                                     {formName!=='Display'?<Number render={NumberWid} internalName={this.props.internalName}  className={'input input-' + this.props.InternalName} storeIndex={this.props.storeIndex} />:
                                     <Span internalName={this.props.internalName} value={this.props.item[accessor]} /> }
                                 </div>

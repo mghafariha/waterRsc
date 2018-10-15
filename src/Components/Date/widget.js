@@ -5,7 +5,7 @@ import { Calendar, DatePicker } from 'react-persian-datepicker';
 
 const DateWid=({internalName,value,onChange})=>(
 
-<div><DatePicker onChange={onChange}  calendarStyles={styles} /></div>
+<div><DatePicker onChange={onChange}  calendarStyles={styles}  /></div>
 
 )
 export default DateWid

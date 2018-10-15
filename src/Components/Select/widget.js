@@ -7,6 +7,7 @@ const SelectWid=({value,internalName,multiple,options,onChange})=>(
            name={internalName}
           
     >
+    <option value={null}>----</option>
     {options.map((opt,index)=>(<option key={index} value={opt} selected={opt==value?'selected':''} >{opt}</option>))}
 
     </select>

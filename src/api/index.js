@@ -11,59 +11,6 @@ const header={
     }
 }
 
-
-const d = {
-    AllowanceFloorBreaker: "56",
-    ApprovedVolume: "12",
-    CodeConservationStudies: "edrr",
-    CultivarType: "rfv",
-    DateInstallationMeter: new Date('2018 / 12 / 01'),
-    Description: "gggfgggh",
-    DiameterWaterPipe: "12",
-    DisplacementRate: "67",
-    DrillingDevice: "eddfff",
-    FlowWater: "2333",
-    Index: 45,
-    LandArea: "12",
-    LatitudeWell: "45",
-    LongitudeWell: "12",
-    NationalNumber: "678",
-    NumberPartners: "12",
-    OwnerName: "trfggg",
-    PowerlevelDiesel: "12",
-    PowerlevelElectricity: "12",
-    SerialNumber: "345",
-    SubscriptionCode: "23we",
-    TypeDigging: "rff",
-    Village: "cde",
-    WaterSurface: "45",
-    WellDepth: "23",
-    WorkHours: "12",
-    fathersName: "frttt",
-    finalDisplacemenLicense: new Date('2018/12/03'),
-    licenseDate: new Date('2018 / 12 / 03'),
-    licenseDateDigPrimary: new Date('2018 / 12 / 03'),
-    licenseNumber: "rtg555",
-    licenseNumberDigPrimary: "ثقبیی",
-    zone: "45",
-    DisplacemenLicense: 'vfff',
-FormType: 'ffgg',
-KindConsumptionWater:'hnnn',
-LicenseFloorBreaker: ',klooo',
-Meter: 'gbhy',
-Pipeline:'nhju',
-Plain: ';loppp',
-StudyArea: 'bghyy',
-TypeWell: 'zass',
-Typelicense: 'xsw',
-WaterAffairs: 'xsde',
-WaterSystem: 'xsa',
-
-
-licenseKind: 'sew'
-
-}
-
 export const getAllItem=(storeIndex,select)=>axios.get(
     URL + "/api/"+storeIndex+(select&&select!=''?'?$select='+select:''),
     header
@@ -96,7 +43,11 @@ export const removeItem=(id,storeIndex)=>axios.delete(
 export const getMetaData=(id)=>axios.get(
     URL+ "api/metadata/"+ id,
     header
-)   
+) 
+export const uploadFile=(data)=>axios.post(
+    URL+ "api/upload/", data,
+    header
+)  
 
 // export const saveItem=()=>axios.post(
 //     URL + "_Layouts/15/AutomateFormProcess/Services.aspx/GetDisplayFields", {

@@ -21,6 +21,9 @@ class Date extends React.Component {
         return this.props.render({internalName:this.props.internalName,value,onChange:this.handleChange})
     }
 }
-const mapStateToProps =(state,props)=> ({ item:state.item[props.storeIndex],field:state.columns[props.storeIndex].find((field)=>field.accessor==props.internalName) })
+const mapStateToProps =(state,props)=> 
+(console.log('itmmm555',state.item[props.storeIndex]), 
+{item:state.item[props.storeIndex],
+    field:state.columns[props.storeIndex].find((field)=>field.accessor==props.internalName)})
 
 export default connect(mapStateToProps)(Date)
